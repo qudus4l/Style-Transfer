@@ -29,7 +29,7 @@ def style_transfer_app():
         st.error(f"An error occurred: {e}")
 
 if __name__ == "__main__":
-    style_transfer_app() 
+    style_transfer_app()
 
 
 
