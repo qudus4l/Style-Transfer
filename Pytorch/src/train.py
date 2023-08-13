@@ -31,6 +31,8 @@ class style_transfer_VGG(nn.Module):
 model = style_transfer_VGG().to(device).eval()
 
 def train_image(original_img, style_img):
+    original_img = load_image(original_img)
+    style_img = load_image(style_img)
     total_steps = 6000
     learning_rate = 0.001
     alpha = 1
@@ -40,8 +42,8 @@ def train_image(original_img, style_img):
 
     for e in range(total_steps):
         generated_features = model(generated)
-        original_img_features = model(load_image(original_img))
-        style_features = model(load_image(style_img))
+        original_img_features = model(original_img)
+        style_features = model(style_img)
 
         style_loss = original_loss = 0
 
