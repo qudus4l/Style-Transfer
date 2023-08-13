@@ -1,6 +1,6 @@
 import streamlit as st
 from PIL import Image
-from train.py import train_image  # Import the generated image from style_transfer_module.py
+from train import train_image  # Import the generated image from style_transfer_module.py
 
 def style_transfer_app():
     st.title("Style Transfer App")
