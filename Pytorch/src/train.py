@@ -35,8 +35,8 @@ def train_image(original_img, style_img):
     learning_rate = 0.001
     alpha = 1
     beta = 0.01
+    generated = original_img.clone().requires_grad_(True)  # Initialize generated here
     optimizer = torch.optim.Adam([generated], lr=learning_rate)
-    generated = original_img.clone().requires_grad_(True)
 
     for e in range(total_steps):
         generated_features = model(generated)
