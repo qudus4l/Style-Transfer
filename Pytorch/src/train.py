@@ -11,7 +11,7 @@ model = style_transfer_VGG().to(device).eval()
 def train_image(original_img, style_img):
     original_img = load_image(original_img)
     style_img = load_image(style_img)
-    epoch = 1000
+    epoch = 6000
     learning_rate = 0.001
     alpha = 1
     beta = 0.01
@@ -30,4 +30,8 @@ def train_image(original_img, style_img):
         optimizer.zero_grad()
         total_loss.backward()
         optimizer.step()
-    return generated
+        if e % 100 == 0:
+            print(f"Epoch {e} Total loss: {total_loss.item()}")
+            save_image(generated, f"generated_{e}.png")
+
+train_image("Pytorch/content_image.jpg", "Pytorch/style_image.jpg")
