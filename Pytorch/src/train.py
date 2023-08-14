@@ -30,7 +30,5 @@ def train_image(original_img, style_img):
         optimizer.zero_grad()
         total_loss.backward()
         optimizer.step()
-        if e % 100 == 0:
-            print(f"Epoch {e} Total loss: {total_loss.item()}")
-            save_image(generated, f"generated_{e}.png")
-            
+        if e == 1000:
+            return generated
