@@ -11,7 +11,7 @@ model = style_transfer_VGG().to(device).eval()
 def train_image(original_img, style_img):
     original_img = load_image(original_img)
     style_img = load_image(style_img)
-    epoch = 100
+    epoch = 1
     learning_rate = 0.001
     alpha = 1
     beta = 0.01
@@ -29,8 +29,6 @@ def train_image(original_img, style_img):
         #optimize the pixel values of the generated image and backpropagate the loss
         optimizer.zero_grad()
         total_loss.backward()
-        optimizer.step()
-        if e % 100 == 0:
-            print(f"Epoch {e} Total loss: {total_loss.item()}")
+        optimizer.step()s
         #return the generated image
     return generated
