@@ -15,11 +15,12 @@ text_placeholder = st.empty()
 
 # Placeholder for the generated image
 image_placeholder = st.empty()
-
-# Button to start style transfer
+# Show button to start style transfer
 if st.button("Generate Styled Image"):
-    # Placeholder texts simulating artist's comments
-    placeholders = [
+    with st.spinner("Generating styled image..."):
+        # Display placeholder texts while model is running
+        text_placeholder = st.empty()
+        placeholders = [
         "Let me just rinse my brush...",
         "Carefully outlining the borders...",
         "Ah... this looks very nice...",
@@ -67,6 +68,11 @@ if st.button("Generate Styled Image"):
         "It's not a bug, it's a creative feature!"
     ]
 
+        for text in placeholders:
+            text_placeholder.text(text)
+            time.sleep(7)
+
+
     # Perform style transfer and get generated image
     generated_image = train_image(content_image, style_image)
 
@@ -74,18 +80,8 @@ if st.button("Generate Styled Image"):
     generated_np = generated_image.squeeze().cpu().detach().numpy()
     generated_np = (generated_np - generated_np.min()) / (generated_np.max() - generated_np.min())
 
-    # Display progress text using placeholders
-    for text in placeholders:
-        text_placeholder.text(text + "...")
-        time.sleep(7)
-        if text == "Adding the final touches...":
-            # Display the generated image in the app
-            # Display uploaded image
-            st.markdown('<div class="image-container">', unsafe_allow_html=True)
-            st.image(generated_image, caption="Uploaded Image", use_column_width=True)
-            st.markdown("</div>", unsafe_allow_html=True)
-            text_placeholder.empty()  # Remove the progress text
-            break  # Stop displaying texts after image is generated
+st.image(generated_image, caption="Generated Image", use_column_width=True, channels="RGB")
+
 
 
 
