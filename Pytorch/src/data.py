@@ -12,7 +12,7 @@ def load_image(img):
     '''
     image = Image.open(img)
     transform = transforms.Compose([
-        transforms.Resize(356),
+        transforms.Resize(356,356),
         transforms.ToTensor()
         #transforms.Normalize(
         #    mean=[],  # RGB
