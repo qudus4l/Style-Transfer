@@ -1,5 +1,6 @@
 import torch
 
+
 def calc_content_loss(gen_feat,orig_feat):
     #calculating the content loss 
     content_l=torch.mean((gen_feat-orig_feat)**2)#*0.5
@@ -16,7 +17,7 @@ def calc_style_loss(gen,style):
     style_l=torch.mean((G-A)**2)#/(4*channel*(height*width)**2)
     return style_l
 
-def calculate_loss(gen_features, orig_feautes, style_featues):
+def calculate_loss(gen_features, orig_feautes, style_featues, alpha, beta):
     style_loss=content_loss=0
     for gen,cont,style in zip(gen_features,orig_feautes,style_featues):
         content_loss+=calc_content_loss(gen,cont)

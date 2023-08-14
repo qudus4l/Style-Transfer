@@ -25,7 +25,7 @@ def train_image(original_img, style_img):
         style_featues=model(style_img)
 
         #iterating over the activation of each layer and calculate the loss and add it to the content and the style loss
-        total_loss=calculate_loss(gen_features, orig_feautes, style_featues)
+        total_loss=calculate_loss(gen_features, orig_feautes, style_featues, alpha, beta)
         #optimize the pixel values of the generated image and backpropagate the loss
         optimizer.zero_grad()
         total_loss.backward()
