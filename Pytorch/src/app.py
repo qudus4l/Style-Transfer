@@ -80,12 +80,12 @@ if content_image and style_image:
                     time.sleep(4)
 
 
-# Perform style transfer and get generated image
-generated_image = train_image(content_path, style_path)
-generated_image = Image.open(generated_image)
+        # Perform style transfer and get generated image
+        generated_image = train_image(content_path, style_path)
+        generated_image = Image.open(generated_image)
 
-# Convert the tensor to a NumPy array and normalize it
-generated_np = generated_image.squeeze().cpu().detach().numpy()
-generated_np = (generated_np - generated_np.min()) / (generated_np.max() - generated_np.min())
+        # Convert the tensor to a NumPy array and normalize it
+        generated_np = generated_image.squeeze().cpu().detach().numpy()
+        generated_np = (generated_np - generated_np.min()) / (generated_np.max() - generated_np.min())
 
-st.image(generated_image, caption="Generated Image", use_column_width=True, channels="RGB")
+        st.image(generated_image, caption="Generated Image", use_column_width=True, channels="RGB")
