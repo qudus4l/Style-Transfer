@@ -19,6 +19,4 @@ def load_image(img):
         #    std=[])
     ])
     image = transform(image).unsqueeze(0)
-    return image.to(device)
-
-
+    return image.to(device, torch.float)
