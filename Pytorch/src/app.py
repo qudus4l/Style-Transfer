@@ -1,6 +1,7 @@
 import streamlit as st
 import time
 from train import train_image
+from PIL import Image
 
 st.title("Style Transfer App")
 
@@ -8,6 +9,11 @@ st.title("Style Transfer App")
 content_image = st.file_uploader("Upload Content Image", type=["jpg", "png", "jpeg"])
 style_image = st.file_uploader("Upload Style Image", type=["jpg", "png", "jpeg"])
 
+if content_image is not None:
+        content_image = Image.open(content_image)
+
+if style_image is not None:
+        style_image = Image.open(style_image)
 
 
 # Placeholder to display progress text
