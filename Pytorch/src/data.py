@@ -10,7 +10,6 @@ def load_image(img):
     :param img: path to image
     :return: image tensor
     '''
-    image = Image.open(img)
     transform = transforms.Compose([
         transforms.Resize((356,356)),
         transforms.ToTensor()
@@ -18,5 +17,5 @@ def load_image(img):
         #    mean=[],  # RGB
         #    std=[])
     ])
-    image = transform(image).unsqueeze(0)
+    image = transform(img).unsqueeze(0)
     return image.to(device, torch.float)
