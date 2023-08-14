@@ -76,7 +76,7 @@ if st.button("Generate Styled Image"):
 
         for text in placeholders:
             text_placeholder.text(text)
-            time.sleep(7)
+            time.sleep(4)
 
 
 # Perform style transfer and get generated image
