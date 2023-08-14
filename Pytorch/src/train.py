@@ -29,6 +29,6 @@ def train_image(original_img, style_img):
         #optimize the pixel values of the generated image and backpropagate the loss
         optimizer.zero_grad()
         total_loss.backward()
-        optimizer.step()s
+        optimizer.step()
         #return the generated image
     return generated
