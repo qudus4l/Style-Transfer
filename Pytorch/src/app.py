@@ -5,7 +5,6 @@ from torchvision.transforms import ToPILImage
 from model import style_transfer_VGG
 import time
 
-st.set_option('server.maxUploadSize', 3600)
 # Load the pre-trained model
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 model = style_transfer_VGG().to(device).eval()
