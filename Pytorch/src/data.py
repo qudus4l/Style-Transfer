@@ -2,10 +2,7 @@ from PIL import Image
 import torch
 from torchvision import transforms
 
-if torch.cuda.is_available():
-    device = torch.device("cuda")
-elif torch.backends.mps.is_available():
-    device = torch.device("mps:0")
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 def load_image(img):
     '''
@@ -15,7 +12,7 @@ def load_image(img):
     '''
     image = Image.open(img)
     transform = transforms.Compose([
-        transforms.Resize((512,512)),
+        transforms.Resize((356,356)),
         transforms.ToTensor()
         #transforms.Normalize(
         #    mean=[],  # RGB
