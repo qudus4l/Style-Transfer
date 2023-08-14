@@ -82,7 +82,7 @@ if content_image and style_image:
     # Display progress text using placeholders
     for text in placeholders:
         text_placeholder.text(text + "...")
-        time.sleep(7)
+        time.sleep(4)
         if text == "It's not a bug, it's a creative feature!":
             # Display the generated image in the app
             image_placeholder.image(generated_np, caption="Generated Image", use_column_width=True, channels="RGB")
