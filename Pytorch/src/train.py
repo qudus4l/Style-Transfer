@@ -30,5 +30,4 @@ def train_image(original_img, style_img):
         optimizer.zero_grad()
         total_loss.backward()
         optimizer.step()
-        if e == 100:
-            return generated
+    return generated
