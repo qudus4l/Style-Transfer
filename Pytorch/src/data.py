@@ -2,7 +2,10 @@ from PIL import Image
 import torch
 from torchvision import transforms
 
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+if torch.cuda.is_available():
+    device = torch.device("cuda")
+elif torch.backends.mps.is_available():
+    device = torch.device("mps:0")
 
 def load_image(img):
     '''
