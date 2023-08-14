@@ -81,7 +81,7 @@ if content_image and style_image:
 
 
 # Perform style transfer and get generated image
-generated_image = train_image(content_image, style_image)
+generated_image = train_image(content_path, style_path)
 generated_image = Image.open(generated_image)
 
 # Convert the tensor to a NumPy array and normalize it
