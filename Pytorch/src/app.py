@@ -73,12 +73,12 @@ if st.button("Generate Styled Image"):
             time.sleep(7)
 
 
-    # Perform style transfer and get generated image
-    generated_image = train_image(content_image, style_image)
+# Perform style transfer and get generated image
+generated_image = train_image(content_image, style_image)
 
-    # Convert the tensor to a NumPy array and normalize it
-    generated_np = generated_image.squeeze().cpu().detach().numpy()
-    generated_np = (generated_np - generated_np.min()) / (generated_np.max() - generated_np.min())
+# Convert the tensor to a NumPy array and normalize it
+generated_np = generated_image.squeeze().cpu().detach().numpy()
+generated_np = (generated_np - generated_np.min()) / (generated_np.max() - generated_np.min())
 
 st.image(generated_image, caption="Generated Image", use_column_width=True, channels="RGB")
 
