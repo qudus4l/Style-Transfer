@@ -97,32 +97,45 @@ def time_travel_app():
     """
     , unsafe_allow_html=True
 )
-
-
     selected_era = st.selectbox("🕰️ **Choose an era that captivates you!**", [
     "Ancient Art",
     "Medieval Art",
     "Renaissance Art",
     "Mannerism Art",
-    "Baroque Art"
+    "Baroque Art",
+    "Rococo",
+    "Neoclassicism",
+    "Romanticism",
+    "Realism"
 ])
 
-
     artists_by_era = {
-    "Ancient Art": [
-        "Bularchus", "Panaenus"],
-    "Medieval Art": [
-        "Giotto di Bondone","Hildegard of Bingen","Limbourg Brothers","Cimabue","Master Bertram"],
-    "Renaissance Art": [
-        "Leonardo da Vinci","Michelangelo Buonarroti","Raphael","Sandro Botticelli","Albrecht Dürer"
-    ],
-    "Mannerism Art": [
-        "El Greco","Parmigianino","Jacopo da Pontormo","Rosso Fiorentino","Giuseppe Arcimboldo"
-    ],
-    "Baroque Art": [
-        "Caravaggio","Rembrandt van Rijn","Peter Paul Rubens"
-    ]
-}
+        "Ancient Art": [
+            "Bularchus", "Panaenus"],
+        "Medieval Art": [
+            "Giotto di Bondone","Hildegard of Bingen","Limbourg Brothers","Cimabue","Master Bertram"],
+        "Renaissance Art": [
+            "Leonardo da Vinci","Michelangelo Buonarroti","Raphael","Sandro Botticelli","Albrecht Dürer"
+        ],
+        "Mannerism Art": [
+            "El Greco","Parmigianino","Jacopo da Pontormo","Rosso Fiorentino","Giuseppe Arcimboldo"
+        ],
+        "Baroque Art": [
+            "Caravaggio","Rembrandt van Rijn","Peter Paul Rubens"
+        ],
+        "Rococo": [
+            "Jean-Antoine Watteau","François Boucher","Jean-Honoré Fragonard","Thomas Gainsborough","Jean-Baptiste-Siméon Chardin"
+        ],
+        "Neoclassicism": [
+            "Jacques-Louis David","Jean-Auguste-Dominique Ingres","Angelica Kauffman"
+        ],
+        "Romanticism": [
+            "Caspar David Friedrich","Eugène Delacroix","J.M.W. Turner","Francisco Goya","William Blake"
+        ],
+        "Realism": [
+            "Honoré Daumier","Jean-François Millet","Winslow Homer","Thomas Eakins"
+        ]
+    }
 
 
     selected_artist = random.choice(artists_by_era[selected_era])
