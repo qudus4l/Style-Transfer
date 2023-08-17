@@ -114,13 +114,13 @@ def time_travel_app():
         "Bularchus", "Panaenus"],
     "Medieval Art": [
         "Giotto di Bondone","Hildegard of Bingen","Limbourg Brothers","Cimabue","Master Bertram"],
-    "Renaissance (14th–17th century)": [
+    "Renaissance Art": [
         "Leonardo da Vinci","Michelangelo Buonarroti","Raphael","Sandro Botticelli","Albrecht Dürer"
     ],
-    "Mannerism (Late 16th century)": [
+    "Mannerism Art": [
         "El Greco","Parmigianino","Jacopo da Pontormo","Rosso Fiorentino","Giuseppe Arcimboldo"
     ],
-    "Baroque (17th–18th century)": [
+    "Baroque Art": [
         "Caravaggio","Rembrandt van Rijn","Peter Paul Rubens"
     ]
 }
