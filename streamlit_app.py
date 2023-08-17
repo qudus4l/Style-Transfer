@@ -219,7 +219,7 @@ def neural_style_transfer_app():
                         os.remove("stylized_video.gif")
                     
     elif content_type == "Real-time":
-        st.write("Experience live style transformation using your webcam – see the magic happen as you move.")
+        st.write("Experience live style transformation using your webcam – see the magic happen as you move (Run on local).")
         style_image_path = st.file_uploader("Upload Style Image", type=["jpg", "jpeg", "png"])
         if style_image_path:
             # Load the style transfer model
