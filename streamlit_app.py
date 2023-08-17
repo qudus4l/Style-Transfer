@@ -7,8 +7,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import time
 import cv2
-import imageio
-import base64
+from PIL import Image
 
 def preprocess_and_view_image(content_image_path, style_image_path):
     content_image = plt.imread(content_image_path)
@@ -188,20 +187,19 @@ def neural_style_transfer_app():
                         temp_file.write(content_video_path.read())
                     stylized_frames = preprocess_and_display_video("temp_video.mp4", style_image_path)
     
-                    # Save stylized frames as a GIF using imageio
-                    gif_path = "stylized_video.gif"
-                    imageio.mimsave(gif_path, stylized_frames, duration=0.1)  # Adjust the duration as needed
+                    # Save stylized frames as a looping GIF using PIL
+                    gif_frames = [Image.fromarray(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)) for frame in stylized_frames]
+                    gif_frames[0].save("stylized_video.gif", save_all=True, append_images=gif_frames[1:], loop=0, duration=100)
 
-                    # Display the saved GIF
-                    # Display the saved GIF using HTML tags for looping playback
-                    gif_html = f'<img src="data:image/gif;base64,{base64.b64encode(open(gif_path, "rb").read()).decode()}" loop="infinite">'
-                    st.markdown(gif_html, unsafe_allow_html=True)
+                    # Display the looping GIF
+                    gif_bytes = open("stylized_video.gif", "rb").read()
+                    st.image(gif_bytes)
 
                     # Clean up the temporary files
                     if os.path.exists("temp_video.mp4"):
                         os.remove("temp_video.mp4")
-                    if os.path.exists(gif_path):
-                        os.remove(gif_path)
+                    if os.path.exists("stylized_video.gif"):
+                        os.remove("stylized_video.gif")
                     
     elif content_type == "Real-time":
         style_image_path = st.file_uploader("Upload Style Image", type=["jpg", "jpeg", "png"])

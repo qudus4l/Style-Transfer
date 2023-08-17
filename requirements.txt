@@ -6,4 +6,3 @@ tensorflow-hub
 matplotlib
 torch
 Pillow
-Imageio
