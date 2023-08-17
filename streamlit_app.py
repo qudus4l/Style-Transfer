@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 import time
 import cv2
 import imageio
+import base64
 
 def preprocess_and_view_image(content_image_path, style_image_path):
     content_image = plt.imread(content_image_path)
@@ -192,7 +193,9 @@ def neural_style_transfer_app():
                     imageio.mimsave(gif_path, stylized_frames, duration=0.1)  # Adjust the duration as needed
 
                     # Display the saved GIF
-                    st.image(gif_path, use_column_width=True)
+                    # Display the saved GIF using HTML tags for looping playback
+                    gif_html = f'<img src="data:image/gif;base64,{base64.b64encode(open(gif_path, "rb").read()).decode()}" loop="infinite">'
+                    st.markdown(gif_html, unsafe_allow_html=True)
 
                     # Clean up the temporary files
                     if os.path.exists("temp_video.mp4"):
