@@ -72,6 +72,7 @@ def preprocess_and_display_video(video_path, style_image_path):
 
     return stylized_frames
 
+
 # Function for the "Time Travel" feature
 def time_travel_app():
     st.title("TimeFlow: Artistic Odyssey")
@@ -146,7 +147,7 @@ def time_travel_app():
 def neural_style_transfer_app():
     st.title("Neural Style Transfer")
 
-    content_type = st.radio("Choose Input Type", ["Image", "Video"])
+    content_type = st.radio("Choose Input Type", ["Image", "Video", "Real-time"])
 
     if content_type == "Image":
         content_image_path = st.file_uploader("Upload Content Image", type=["jpg", "jpeg", "png"])
@@ -179,6 +180,7 @@ def neural_style_transfer_app():
         style_image_path = st.file_uploader("Upload Style Image", type=["jpg", "jpeg", "png"])
 
         if content_video_path and style_image_path:
+            video_feed = st.video("camera://0", format="MJPG", use_container_width=True)
             if st.button("Generate Styled Video"):
                 with st.spinner("Generating styled video..."):
                     with open("temp_video.mp4", "wb") as temp_file:
@@ -204,8 +206,68 @@ def neural_style_transfer_app():
                         os.remove("temp_video.mp4")
                     if os.path.exists("stylized_video.mp4"):
                         os.remove("stylized_video.mp4")
+    elif content_type == "Real-time":
+        style_image_path = st.file_uploader("Upload Style Image", type=["jpg", "jpeg", "png"])
+        if style_image_path:
+            # Load the style transfer model
+            hub_module = hub.load('https://tfhub.dev/google/magenta/arbitrary-image-stylization-v1-256/2')
 
+            # Add a button to start stylization
+            start_button = st.button("Start Stylization")
 
+            if start_button:
+                # Capture video from webcam
+                org_video = cv2.VideoCapture(0)
+
+                # Get frame dimensions
+                frame_width = int(org_video.get(cv2.CAP_PROP_FRAME_WIDTH))
+                frame_height = int(org_video.get(cv2.CAP_PROP_FRAME_HEIGHT))
+                fps = int(org_video.get(cv2.CAP_PROP_FPS))
+
+                # Preprocess the style image
+                style_image = plt.imread(style_image_path)
+                style_image = style_image.astype(np.float32)[np.newaxis, ...] / 255.
+                style_image = tf.image.resize(style_image, [256, 256])
+
+                # Create VideoWriter object
+                out = cv2.VideoWriter('stylized_video.mp4', cv2.VideoWriter_fourcc(*'mp4v'), fps, (frame_width, frame_height))
+
+                # Add a stop button
+                stop_button = st.button("Stop Stylization")
+
+                # Create a placeholder for displaying video frames
+                frame_placeholder = st.empty()
+
+                # Loop for real-time video stylization
+                while org_video.isOpened() and not stop_button:
+                    ret, frame = org_video.read()
+                    if not ret:
+                        break
+
+                    # Preprocess the frame
+                    frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+                    frame = frame.astype(np.float32)[np.newaxis, ...] / 255
+                    frame = tf.image.resize(frame, [256, 256])
+
+                    # Apply stylization
+                    stylized_output = hub_module(tf.constant(frame), tf.constant(style_image, dtype=tf.float32))
+                    stylized_video_output = stylized_output[0].numpy()[0]
+
+                    # Postprocess the video
+                    stylized_video_output = (stylized_video_output * 255).astype(np.uint8)
+                    stylized_video_output = cv2.cvtColor(stylized_video_output, cv2.COLOR_RGB2BGR)
+
+                    out.write(stylized_video_output)
+
+                    # Display the stylized video in the placeholder
+                    frame_placeholder.image(stylized_video_output, channels="RGB", use_column_width=True)
+
+                    # Introduce a small delay to simulate real-time camera experience
+                    time.sleep(0.1)
+
+                # Release video and writer
+                org_video.release()
+                out.release()
 
 # Define the main navigation sidebar
 st.sidebar.title("What would you like to do")
