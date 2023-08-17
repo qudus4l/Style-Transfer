@@ -100,13 +100,31 @@ def time_travel_app():
 )
 
 
-    selected_era = st.selectbox("🕰️ **Choose an era that captivates you!**", ["Ancient Art", "Medieval Art", "Renaissance"])
+    selected_era = st.selectbox("🕰️ **Choose an era that captivates you!**", [
+    "Ancient Art",
+    "Medieval Art",
+    "Renaissance Art",
+    "Mannerism Art",
+    "Baroque Art"
+])
+
 
     artists_by_era = {
-        "Ancient Art": ["Bularchus", "Panaenus"],
-        "Medieval Art": ["Giotto di Bondone", "Hildegard of Bingen", "Limbourg Brothers", "Cimabue", "Master Bertram"],
-        "Renaissance": ["Leonardo da Vinci", "Michelangelo Buonarroti", "Raphael", "Sandro Botticelli"]
-    }
+    "Ancient Art": [
+        "Bularchus", "Panaenus"],
+    "Medieval Art": [
+        "Giotto di Bondone","Hildegard of Bingen","Limbourg Brothers","Cimabue","Master Bertram"],
+    "Renaissance (14th–17th century)": [
+        "Leonardo da Vinci","Michelangelo Buonarroti","Raphael","Sandro Botticelli","Albrecht Dürer"
+    ],
+    "Mannerism (Late 16th century)": [
+        "El Greco","Parmigianino","Jacopo da Pontormo","Rosso Fiorentino","Giuseppe Arcimboldo"
+    ],
+    "Baroque (17th–18th century)": [
+        "Caravaggio","Rembrandt van Rijn","Peter Paul Rubens"
+    ]
+}
+
 
     selected_artist = random.choice(artists_by_era[selected_era])
 
