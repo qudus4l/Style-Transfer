@@ -173,23 +173,7 @@ def neural_style_transfer_app():
         if content_image_path and style_image_path:
             if st.button("Generate Styled Image"):
                 with st.spinner("Generating styled image..."):
-                    text_placeholder = st.empty()
-                    placeholders = [
-                        "Let me just rinse my brush...",
-                        "Carefully outlining the borders...",
-                        "Ah... this looks very nice...",
-                        "I like the choice of images...",
-                        "Adding the final touches...",
-                        "Stepping back to evaluate...",
-                        "Adding a signature...",
-                        "All done! Here's your image!"
-                    ]
-
-                    for text in placeholders:
-                        text_placeholder.text(text)
-                        time.sleep(2)
-
-                stylized_image = preprocess_and_view_image(content_image_path, style_image_path)
+                    stylized_image = preprocess_and_view_image(content_image_path, style_image_path)
                 st.image(stylized_image, caption="Stylized Image", width=400)
 
     elif content_type == "Video":
