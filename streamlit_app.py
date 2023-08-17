@@ -189,7 +189,7 @@ def neural_style_transfer_app():
                     # Create a video from stylized frames using OpenCV's VideoWriter
                     frame_height, frame_width, _ = stylized_frames[0].shape
 
-                    fourcc = cv2.VideoWriter_fourcc(*'mp4v')
+                    fourcc = cv2.VideoWriter_fourcc(*'avc1')
                     out = cv2.VideoWriter("stylized_video.mp4", fourcc, 30, (frame_width, frame_height))
 
                     for frame in stylized_frames:
