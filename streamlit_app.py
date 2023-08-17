@@ -180,7 +180,6 @@ def neural_style_transfer_app():
         style_image_path = st.file_uploader("Upload Style Image", type=["jpg", "jpeg", "png"])
 
         if content_video_path and style_image_path:
-            video_feed = st.video("camera://0", format="MJPG", use_container_width=True)
             if st.button("Generate Styled Video"):
                 with st.spinner("Generating styled video..."):
                     with open("temp_video.mp4", "wb") as temp_file:
