@@ -189,16 +189,15 @@ def neural_style_transfer_app():
                     # Create a video from stylized frames using OpenCV's VideoWriter
                     frame_height, frame_width, _ = stylized_frames[0].shape
 
-                    fourcc = cv2.VideoWriter_fourcc(*'XVID')
-                    out = cv2.VideoWriter("stylized_video.mp4", fourcc, 30, (frame_width, frame_height))
+                    fourcc = cv2.VideoWriter_fourcc(*'GIF')
+                    out = cv2.VideoWriter("stylized_video.gif", fourcc, 30, (frame_width, frame_height))
 
                     for frame in stylized_frames:
                         out.write(frame)
                     out.release()
 
                     # Read the stylized video back and display it using Streamlit
-                    stylized_video = open("stylized_video.mp4", "rb").read()
-                    st.video(stylized_video)
+                    st.image("stylized_video.gif", use_column_width=True)
 
                     # Clean up the temporary files
                     if os.path.exists("temp_video.mp4"):
