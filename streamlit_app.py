@@ -7,6 +7,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import time
 import cv2
+import imageio
 
 def preprocess_and_view_image(content_image_path, style_image_path):
     content_image = plt.imread(content_image_path)
@@ -186,24 +187,18 @@ def neural_style_transfer_app():
                         temp_file.write(content_video_path.read())
                     stylized_frames = preprocess_and_display_video("temp_video.mp4", style_image_path)
     
-                    # Create a video from stylized frames using OpenCV's VideoWriter
-                    frame_height, frame_width, _ = stylized_frames[0].shape
+                    # Save stylized frames as a GIF using imageio
+                    gif_path = "stylized_video.gif"
+                    imageio.mimsave(gif_path, stylized_frames, duration=0.1)  # Adjust the duration as needed
 
-                    fourcc = cv2.VideoWriter_fourcc(*'GIF')
-                    out = cv2.VideoWriter("stylized_video.gif", fourcc, 30, (frame_width, frame_height))
-
-                    for frame in stylized_frames:
-                        out.write(frame)
-                    out.release()
-
-                    # Read the stylized video back and display it using Streamlit
-                    st.image("stylized_video.gif", use_column_width=True)
+                    # Display the saved GIF
+                    st.image(gif_path, use_column_width=True)
 
                     # Clean up the temporary files
                     if os.path.exists("temp_video.mp4"):
                         os.remove("temp_video.mp4")
-                    if os.path.exists("stylized_video.mp4"):
-                        os.remove("stylized_video.mp4")
+                    if os.path.exists(gif_path):
+                        os.remove(gif_path)
                     
     elif content_type == "Real-time":
         style_image_path = st.file_uploader("Upload Style Image", type=["jpg", "jpeg", "png"])
