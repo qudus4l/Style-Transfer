@@ -92,9 +92,6 @@ def time_travel_app():
     Embark on a journey through time and artistry, where you can explore the intersection
     of historical epochs and artistic styles. Choose an era to discover captivating
     masterpieces from renowned artists of that period.
-    Unveil the hidden connections between the past and present by applying neural style
-    transfer to your own images using iconic artworks as inspiration. Get ready to create
-    a fusion of timeless art and contemporary vision.
 
     Begin your artistic adventure now! 🚀
     """
@@ -147,10 +144,29 @@ def time_travel_app():
 # Function for the "Neural Style Transfer" feature
 def neural_style_transfer_app():
     st.title("Neural Style Transfer")
+    st.markdown(
+    """
+    <style>
+        /* Set the font to Comic Sans MS */
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+        }
+    </style>
+
+
+    Elevate your visuals with the Neural Style Transfer App! 
+    Combine your images and videos with artistic styles to create captivating, 
+    unique content. Choose from:
+
+    Begin your artistic adventure now! 🚀
+    """
+    , unsafe_allow_html=True
+)
 
     content_type = st.radio("Choose Input Type", ["Image", "Video", "Real-time"])
 
     if content_type == "Image":
+        st.write("Transform your images using artistic styles.")
         content_image_path = st.file_uploader("Upload Content Image", type=["jpg", "jpeg", "png"])
         style_image_path = st.file_uploader("Upload Style Image", type=["jpg", "jpeg", "png"])
 
@@ -177,6 +193,7 @@ def neural_style_transfer_app():
                 st.image(stylized_image, caption="Stylized Image", width=400)
 
     elif content_type == "Video":
+        st.write("Give your videos an artistic touch by applying captivating styles.")
         content_video_path = st.file_uploader("Upload Content Video", type=["mp4", "gif"])
         style_image_path = st.file_uploader("Upload Style Image", type=["jpg", "jpeg", "png"])
 
@@ -202,6 +219,7 @@ def neural_style_transfer_app():
                         os.remove("stylized_video.gif")
                     
     elif content_type == "Real-time":
+        st.write("Experience live style transformation using your webcam – see the magic happen as you move.")
         style_image_path = st.file_uploader("Upload Style Image", type=["jpg", "jpeg", "png"])
         if style_image_path:
             # Load the style transfer model
