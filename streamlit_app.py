@@ -200,11 +200,6 @@ def neural_style_transfer_app():
                     stylized_video = open("stylized_video.mp4", "rb").read()
                     st.video(stylized_video)
 
-                    # Clean up the temporary files
-                    if os.path.exists("temp_video.mp4"):
-                        os.remove("temp_video.mp4")
-                    if os.path.exists("stylized_video.mp4"):
-                        os.remove("stylized_video.mp4")
     elif content_type == "Real-time":
         style_image_path = st.file_uploader("Upload Style Image", type=["jpg", "jpeg", "png"])
         if style_image_path:
