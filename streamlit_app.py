@@ -145,7 +145,7 @@ def time_travel_app():
         "Alphonse Mucha","Antoni Gaudí","Aubrey Beardsley","Gustav Klimt"
     ],
     "Impressionism Art": [
-        "Claude Monet","Edgar Degas","Pierre-Auguste Renoir","Camille Pissarro","Berthe Morisot"
+        "Claude Monet","Pierre-Auguste Renoir","Camille Pissarro","Berthe Morisot"
     ],
     "Post-Impressionism Art": [
         "Vincent van Gogh","Paul Cézanne","Georges Seurat","Paul Gauguin","Henri Rousseau"
