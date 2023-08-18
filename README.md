@@ -61,6 +61,22 @@ streamlit run streamlit_app.py
 
 During script execution, you can halt the real-time style transfer by closing the Streamlit app.
 
+## PyTorch Implementation
+
+Curious about the inner workings of our project? We've harnessed the power of PyTorch to drive the artful transformation process. Dive into the PyTorch implementation in the `pytorch_implementation/src/train.py` script.
+
+To explore the PyTorch implementation:
+
+1. Navigate to the `pytorch_implementation` directory.
+2. Open the `src` folder.
+3. Check out the `train.py` script to uncover the PyTorch-driven artistic transformation process.
+
+Remember, this implementation provides a peek into the fascinating world of style transfer and offers insights into how the art evolves throughout the creative journey.
+
+**Note:** If you decide to run the PyTorch implementation locally, ensure you have the necessary dependencies installed as outlined in the main README. You can experiment with various settings, such as epochs and style weights, directly in the script. The stylized images are saved every 100 epochs to help you observe the artistic progression.
+
+We recommend using a GPU for faster training, and if you're on an Apple Silicon device, you'll be pleased to know that support for MPS (Metal Performance Shaders) is available for accelerated computation.
+
 ## Acknowledgments
 
 Our implementation leverages a variety of technologies, including TensorFlow, TensorFlow Hub, PyTorch, and other libraries, to achieve real-time style transfer.
