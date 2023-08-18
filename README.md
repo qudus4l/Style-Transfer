@@ -1,4 +1,4 @@
-# Artistic Style Transfer for Images and Videos
+#  Artistic Style Transfer for Images and Videos
 
 Welcome to our repository showcasing Python scripts that enable the application of artistic style transfer to both real-time webcam videos and pre-recorded videos/images. This implementation harnesses the power of TensorFlow, PyTorch, and OpenCV to create captivating visual transformations.
 
