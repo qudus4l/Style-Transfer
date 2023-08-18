@@ -174,6 +174,21 @@ def time_travel_app():
     if user_image:
 
         if st.button("Generate Stylized Image"):
+            with st.spinner("Generating styled image..."):
+                    text_placeholder = st.empty()
+                    placeholders = [
+                        "Alright! Going back in time!",
+                        "Locating the artist...",
+                        "Painting...",
+                        "Adding the final touches...",
+                        "Stepping back to evaluate...",
+                        "Adding a signature...",
+                        "All done! Here's your art!"
+                    ]
+
+                    for text in placeholders:
+                        text_placeholder.text(text)
+                        time.sleep(2)
             stylized_image = preprocess_and_view_image(user_image, selected_artwork_path)
             st.image(stylized_image, caption=f"Here's what you would look like if you were painted by {selected_artist}", width=400)
 
@@ -211,7 +226,22 @@ def neural_style_transfer_app():
         if content_image_path and style_image_path:
             if st.button("Generate Styled Image"):
                 with st.spinner("Generating styled image..."):
-                    stylized_image = preprocess_and_view_image(content_image_path, style_image_path)
+                    text_placeholder = st.empty()
+                placeholders = [
+                    "Let me just rinse my brush...",
+                    "Carefully outlining the borders...",
+                    "Ah... this looks very nice...",
+                    "I like the choice of images...",
+                    "Adding the final touches...",
+                    "Stepping back to evaluate...",
+                    "Adding a signature...",
+                    "All done! Here's your image!"
+                ]
+
+                for text in placeholders:
+                    text_placeholder.text(text)
+                    time.sleep(2)
+                stylized_image = preprocess_and_view_image(content_image_path, style_image_path)
                 st.image(stylized_image, caption="Stylized Image", width=400)
 
     elif content_type == "Video":
@@ -224,6 +254,21 @@ def neural_style_transfer_app():
                 with st.spinner("Generating styled video..."):
                     with open("temp_video.mp4", "wb") as temp_file:
                         temp_file.write(content_video_path.read())
+                        text_placeholder = st.empty()
+                    placeholders = [
+                        "Nice video...",
+                        "Splitting the frames",
+                        "Give me a sec...",
+                        "I like the choice of style image...",
+                        "Adding the final touches...",
+                        "Combining the frames",
+                        "Adding a signature...",
+                        "All done! Here's your video!"
+                    ]
+
+                    for text in placeholders:
+                        text_placeholder.text(text)
+                        time.sleep(2)
                     stylized_frames = preprocess_and_display_video("temp_video.mp4", style_image_path)
     
                     # Save stylized frames as a looping GIF using PIL
