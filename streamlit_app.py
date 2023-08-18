@@ -103,39 +103,64 @@ def time_travel_app():
     "Renaissance Art",
     "Mannerism Art",
     "Baroque Art",
-    "Rococo",
-    "Neoclassicism",
-    "Romanticism",
-    "Realism"
+    "Rococo Art",
+    "Neoclassicism Art",
+    "Romanticism Art",
+    "Realism Art",
+    "Art Nouveau Art",
+    "Impressionism Art",
+    "Post-Impressionism Art",
+    "Fauvism Art",
+    "Expressionism Art",
+    "Contemporary Art"
 ])
 
     artists_by_era = {
-        "Ancient Art": [
-            "Bularchus", "Panaenus"],
-        "Medieval Art": [
-            "Giotto di Bondone","Hildegard of Bingen","Limbourg Brothers","Cimabue","Master Bertram"],
-        "Renaissance Art": [
-            "Leonardo da Vinci","Michelangelo Buonarroti","Raphael","Sandro Botticelli","Albrecht Dürer"
-        ],
-        "Mannerism Art": [
-            "El Greco","Parmigianino","Jacopo da Pontormo","Rosso Fiorentino","Giuseppe Arcimboldo"
-        ],
-        "Baroque Art": [
-            "Caravaggio","Rembrandt van Rijn","Peter Paul Rubens"
-        ],
-        "Rococo": [
-            "Jean-Antoine Watteau","François Boucher","Jean-Honoré Fragonard","Thomas Gainsborough","Jean-Baptiste-Siméon Chardin"
-        ],
-        "Neoclassicism": [
-            "Jacques-Louis David","Jean-Auguste-Dominique Ingres","Angelica Kauffman"
-        ],
-        "Romanticism": [
-            "Caspar David Friedrich","Eugène Delacroix","J.M.W. Turner","Francisco Goya","William Blake"
-        ],
-        "Realism": [
-            "Honoré Daumier","Jean-François Millet","Winslow Homer","Thomas Eakins"
-        ]
-    }
+    "Ancient Art": [
+        "Bularchus", "Panaenus"],
+    "Medieval Art": [
+        "Giotto di Bondone","Hildegard of Bingen","Limbourg Brothers","Cimabue","Master Bertram"],
+    "Renaissance Art": [
+        "Leonardo da Vinci","Michelangelo Buonarroti","Raphael","Sandro Botticelli","Albrecht Dürer"
+    ],
+    "Mannerism Art": [
+        "El Greco","Parmigianino","Jacopo da Pontormo","Rosso Fiorentino","Giuseppe Arcimboldo"
+    ],
+    "Baroque Art": [
+        "Caravaggio","Rembrandt van Rijn","Peter Paul Rubens"
+    ],
+    "Rococo Art": [
+        "Jean-Antoine Watteau","François Boucher","Jean-Honoré Fragonard","Thomas Gainsborough","Jean-Baptiste-Siméon Chardin"
+    ],
+    "Neoclassicism Art": [
+        "Jacques-Louis David","Jean-Auguste-Dominique Ingres","Angelica Kauffman"
+    ],
+    "Romanticism Art": [
+        "Caspar David Friedrich","Eugène Delacroix","J.M.W. Turner","Francisco Goya","William Blake"
+    ],
+    "Realism Art": [
+        "Honoré Daumier","Jean-François Millet","Winslow Homer","Thomas Eakins"
+    ],
+    "Art Nouveau Art": [
+        "Alphonse Mucha","Antoni Gaudí","Aubrey Beardsley","Gustav Klimt"
+    ],
+    "Impressionism Art": [
+        "Claude Monet","Edgar Degas","Pierre-Auguste Renoir","Camille Pissarro","Berthe Morisot"
+    ],
+    "Post-Impressionism Art": [
+        "Vincent van Gogh","Paul Cézanne","Georges Seurat","Paul Gauguin","Henri Rousseau"
+    ],
+    "Fauvism Art": [
+        "Henri Matisse","André Derain","Raoul Dufy","Kees van Dongen","Albert Marquet"
+    ],
+    "Expressionism Art": [
+        "Edvard Munch","Ernst Ludwig Kirchner","Wassily Kandinsky","Egon Schiele","Emil Nolde"
+    ],
+    "Contemporary Art": [
+        "Damien Hirst","Jeff Koons","Ai Weiwei","Yayoi Kusama","Anti Shade"
+    ]
+}
+
 
 
     selected_artist = random.choice(artists_by_era[selected_era])
