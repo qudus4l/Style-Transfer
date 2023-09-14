@@ -76,7 +76,6 @@ def preprocess_and_display_video(video_path, style_image_path):
 
 
 # Function for the "Time Travel" feature
-@st.cache
 def time_travel_app():
     st.title("TimeFlow: Artistic Odyssey")
 
