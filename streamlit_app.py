@@ -9,6 +9,7 @@ import time
 import cv2
 from PIL import Image
 
+@st.cache
 def preprocess_and_view_image(content_image_path, style_image_path):
     content_image = plt.imread(content_image_path)
     style_image = plt.imread(style_image_path)
@@ -33,7 +34,7 @@ def preprocess_and_view_image(content_image_path, style_image_path):
 
     return stylized_image_array[0]
 
-
+@st.cache
 def preprocess_and_display_video(video_path, style_image_path):
     '''This function preprocesses the video and applies style transfer'''
 
@@ -75,6 +76,7 @@ def preprocess_and_display_video(video_path, style_image_path):
 
 
 # Function for the "Time Travel" feature
+@st.cache
 def time_travel_app():
     st.title("TimeFlow: Artistic Odyssey")
 
@@ -193,7 +195,7 @@ def time_travel_app():
             st.image(stylized_image, caption=f"Here's what you would look like if you were painted by {selected_artist}", width=400)
 
 
-
+@st.cache
 # Function for the "Neural Style Transfer" feature
 def neural_style_transfer_app():
     st.title("Neural Style Transfer")
