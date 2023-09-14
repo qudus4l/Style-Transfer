@@ -194,7 +194,6 @@ def time_travel_app():
             st.image(stylized_image, caption=f"Here's what you would look like if you were painted by {selected_artist}", width=400)
 
 
-@st.cache(suppress_st_warning=True)
 # Function for the "Neural Style Transfer" feature
 def neural_style_transfer_app():
     st.title("Neural Style Transfer")
